@@ -1,3 +1,7 @@
+import datetime
+todaydate=datetime.date.today()
+
+
 name = input("What is your name?")
 name = name.upper()
 print ("Hello", name, ", this is my quiz game. It is very simple. ""With every question there will be four possible answers, A through D. Just type "
@@ -17,6 +21,7 @@ def askquestion(questionnumber):
         print(file.readline())
         answer = input("Press the letter that corresponds to the correct answer:")
         answer=str(answer)
+        answer=answer.upper()
         correct=secondfile.readline()
         correct=correct[0]
         correct=str(correct)
@@ -32,4 +37,18 @@ def askquestion(questionnumber):
             askquestion(questionnumber + 1)
 
 askquestion(questionnumber)
-print ("You have completed the game. You're score was:", score)
+
+print (name, ",", str(score), "out of 15 was your score, completed on", todaydate)
+fourthfile=open("List of Scores", "r+")
+fourthfile.writelines(["\n", str(score)])
+fourthfile=sorted(fourthfile.readlines())
+scoreslist=[]
+for line in fourthfile:
+    scoreslist.append(line)
+highscore=int(scoreslist[-1])
+if score > highscore:
+    print ("You have gotten the highest score!")
+else:
+    print ("The highest score is:", str(highscore), "Keep trying and you may get it.")
+#thirdfile=open("List of Entries", "a")
+#thirdfile.writelines()
