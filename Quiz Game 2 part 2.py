@@ -50,5 +50,9 @@ if score > highscore:
     print ("You have gotten the highest score!")
 else:
     print ("The highest score is:", str(highscore), "Keep trying and you may get it.")
-#thirdfile=open("List of Entries", "a")
-#thirdfile.writelines()
+thirdfile=open("List of Entries", "a")
+resultline=(name, "got", score, "on", todaydate)
+resultline=str(resultline)
+print (resultline)
+thirdfile.writelines(resultline)
+
