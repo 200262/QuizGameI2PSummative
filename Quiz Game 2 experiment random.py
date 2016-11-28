@@ -97,4 +97,4 @@ resultline=(name, "got", score, "on", todaydate)
 resultline=str(resultline)
 #creates a result line that will be added to the list of entries
 thirdfile.writelines(resultline)
-#adds the result line to the list of entries 
+#adds the result line to the list of entries

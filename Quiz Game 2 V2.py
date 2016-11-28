@@ -16,13 +16,13 @@ secondfile = open("Answers.txt", "r+")
 score = 0
 #setting a variable for the score
 questionnumber = 0
-#setting a variable for question number
+#setting a variable for question number (NOTE: THIS IS IRRELEVANT WITHIN THE C
 questionsasked = 0
 #setting a variable for how many questions have been asked
 
 
 
-def askquestion(questionnumber):
+def askquestion():
     global questionsasked
     #creating a global variable to prevent problems later
     while questionsasked >= 0 and questionsasked < 15:
@@ -43,16 +43,16 @@ def askquestion(questionnumber):
             score=score+1
             print ("You were correct. Your score is: ", str(score))
             questionsasked=questionsasked+1
-            askquestion(questionnumber + 1)
+            askquestion()
             #if user is correct, one point is added to their score, the question is accounted for and the loop is run again for the next line
         else:
             print ("You were incorrect. The correct answer is:", correct)
             print ("Your score is: ", str(score))
             questionsasked=questionsasked+1
-            askquestion(questionnumber+1)
+            askquestion()
             #if user is incorrect, the question is accounted for and the loop is run again for the next line
 
-askquestion(questionnumber)
+askquestion()
 #starts running the loop
 
 print (name, ",", str(score), "out of 15 was your score, completed on", todaydate)
