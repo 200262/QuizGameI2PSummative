@@ -14,31 +14,46 @@ score = 0
 questionnumber = 0
 questionsasked = 0
 
+from random import shuffle
+x=[i for i in range(15)]
+shuffle(x)
+counter=0
+RandomVariable=x[counter]
+print (x)
 
+questions=[line.rstrip('\n') for line in file]
+answers=[line.rstrip('\n') for line in secondfile]
 
-def askquestion(questionnumber):
+def askquestion(RandomVariable):
     global questionsasked
-    while questionsasked >= 0 and questionsasked < 15:
+    global questions
+    global answers
+    global counter
+    while questionsasked >= 0 and questionsasked < 14:
         global score
-        print(file.readline())
+        print(questions[RandomVariable])
         answer = input("Press the letter that corresponds to the correct answer:")
         answer=str(answer)
         answer=answer.upper()
-        correct=secondfile.readline()
+        correct=answers[RandomVariable]
         correct=correct[0]
         correct=str(correct)
         if correct==answer:
             score=score+1
             print ("You were correct. Your score is: ", str(score))
             questionsasked=questionsasked+1
-            askquestion(questionnumber + 1)
+            counter=counter+1
+            RandomVariable=x[counter]
+            askquestion(RandomVariable)
         else:
             print ("You were incorrect. The correct answer is:", correct)
             print ("Your score is: ", str(score))
             questionsasked=questionsasked+1
-            askquestion(questionnumber + 1)
+            counter=counter+1
+            RandomVariable=x[counter]
+            askquestion(RandomVariable)
 
-askquestion(questionnumber)
+askquestion(RandomVariable)
 
 print (name, ",", str(score), "out of 15 was your score, completed on", todaydate)
 fourthfile=open("List of Scores", "r+")
@@ -57,4 +72,3 @@ resultline=(name, "got", score, "on", todaydate)
 resultline=str(resultline)
 print (resultline)
 thirdfile.writelines(resultline)
-
