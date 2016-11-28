@@ -22,7 +22,7 @@ RandomVariable=x[counter]
 print (x)
 
 questions=[line.rstrip('\n') for line in file]
-answers=[line.rstrip('\n') for line in secondfile]
+answers=[line.rstrip('\n') for line in file]
 
 def askquestion(RandomVariable):
     global questionsasked
