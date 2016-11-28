@@ -22,14 +22,14 @@ RandomVariable=x[counter]
 print (x)
 
 questions=[line.rstrip('\n') for line in file]
-answers=[line.rstrip('\n') for line in file]
+answers=[line.rstrip('\n') for line in secondfile]
 
 def askquestion(RandomVariable):
     global questionsasked
     global questions
     global answers
     global counter
-    while questionsasked >= 0 and questionsasked < 14:
+    while questionsasked >= 0 and questionsasked < 15:
         global score
         print(questions[RandomVariable])
         answer = input("Press the letter that corresponds to the correct answer:")
@@ -42,16 +42,18 @@ def askquestion(RandomVariable):
             score=score+1
             print ("You were correct. Your score is: ", str(score))
             questionsasked=questionsasked+1
-            counter=counter+1
-            RandomVariable=x[counter]
-            askquestion(RandomVariable)
+            while questionsasked < 15:
+                counter=counter+1
+                RandomVariable=x[counter]
+                askquestion(RandomVariable)
         else:
             print ("You were incorrect. The correct answer is:", correct)
             print ("Your score is: ", str(score))
             questionsasked=questionsasked+1
-            counter=counter+1
-            RandomVariable=x[counter]
-            askquestion(RandomVariable)
+            while questionsasked<15:
+                counter=counter+1
+                RandomVariable=x[counter]
+                askquestion(RandomVariable)
 
 askquestion(RandomVariable)
 
